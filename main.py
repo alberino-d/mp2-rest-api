@@ -5,6 +5,7 @@ from pathlib import Path
 import pandas as pd
 from fastapi import FastAPI, File, HTTPException, Query, UploadFile
 from src import DatasetInfo, DatasetStorage, HealthResponse, setup_logging
+from data_pipeline import create_cleaning_report, process_data, validate_dataframe
 
 setup_logging(verbose=True)
 logger = logging.getLogger(__name__)
