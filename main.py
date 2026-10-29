@@ -106,8 +106,8 @@ def process_dataset(dataset_id: int, config: ProcessConfig):
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error))
 
-    # 8. Update storage only after successful validation and processing
-    storage.save(processed_df, storage.get_metadata(dataset_id)["filename"])
+    # 8. Update the existing dataset only after successful processing
+    storage.update(dataset_id, processed_df)
 
     # 9. Return the response
     return {
