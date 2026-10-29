@@ -99,7 +99,11 @@ def process_dataset(dataset_id: int, config: ProcessConfig):
 
         # 7. Compare before and after processing
         cleaning_report = {
+            "rows_before": len(validated_copy),
+            "rows_after": len(processed_df),
             "rows_removed": len(validated_copy) - len(processed_df),
+            "columns_before": len(validated_copy.columns),
+            "columns_after": len(processed_df.columns),
             "columns_removed": len(validated_copy.columns) - len(processed_df.columns)
         }
         logger.info(f"Dataset processing complete: id={dataset_id}, rows_removed={cleaning_report["rows_removed"]}, columns_removed={cleaning_report["columns_removed"]}")
