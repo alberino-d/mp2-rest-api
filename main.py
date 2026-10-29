@@ -4,13 +4,14 @@ import logging
 from pathlib import Path
 import pandas as pd
 from fastapi import FastAPI, File, HTTPException, Query, UploadFile
-from src import DatasetInfo, DatasetStorage, HealthResponse, setup_logging, ProcessConfig, ProcessingReport
+from src import DatasetInfo, DatasetStorage, HealthResponse, setup_logging, ProcessConfig, ProcessingReport, log_requests
 from data_pipeline import create_cleaning_report, process_data, validate_dataframe
 
 setup_logging(verbose=True)
 logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Data Processing API", version="1.0.0")
+app.middleware("http")(log_requests)
 storage = DatasetStorage()
 
 @app.get("/health", response_model=HealthResponse)
