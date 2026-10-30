@@ -1,0 +1,3 @@
+# MP2 – Data Processing API
+
+This project uses FastAPI to implement a REST API to upload, retrieve, and process CSV datasets. The API includes endpoints for uploading CSV files, retrieving stored datasets and their metadata, and processing datasets through configurable validation and data-cleaning operations. These operations include checking required columns, validating numeric values, removing duplicates, handling missing values, and detecting outliers. Through Swagger UI, the application also includes request logging, unique request IDs, error handling, and interactive API documentation. The endpoint functionality and expected responses of the API are tested using pytest.
