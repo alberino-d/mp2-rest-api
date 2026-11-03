@@ -29,7 +29,7 @@ async def log_requests(request: Request, call_next):
     if response.status_code >= 500:
         logger.error(message)
     elif response.status_code >= 400:
-        logger.error(message)
+        logger.warning(message)
     else:
         logger.info(message)
 
